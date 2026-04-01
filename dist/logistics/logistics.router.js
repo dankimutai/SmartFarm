@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.logisticsRouter = void 0;
+const hono_1 = require("hono");
+const logistics_controller_1 = require("./logistics.controller");
+exports.logisticsRouter = new hono_1.Hono();
+exports.logisticsRouter.get("/logistics/pending", logistics_controller_1.logisticsController.getPendingDeliveries);
+exports.logisticsRouter.get("/logistics", logistics_controller_1.logisticsController.getAll);
+exports.logisticsRouter.post("/logistics", logistics_controller_1.logisticsController.create);
+exports.logisticsRouter.post("/logistics/:id/delivered", logistics_controller_1.logisticsController.markDelivered);
+exports.logisticsRouter.get("/logistics/:id", logistics_controller_1.logisticsController.getById);

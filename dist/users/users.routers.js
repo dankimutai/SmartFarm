@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.usersRouter = void 0;
+const hono_1 = require("hono");
+const users_controlers_1 = require("./users.controlers");
+exports.usersRouter = new hono_1.Hono();
+exports.usersRouter.get("/users", users_controlers_1.listUsersController);
+exports.usersRouter.get("/users/:id", users_controlers_1.getUserController);
+exports.usersRouter.put("/users/:id", users_controlers_1.updateUserController);
+exports.usersRouter.delete("/users/:id", users_controlers_1.deleteUserController);

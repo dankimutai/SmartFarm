@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ratingRouter = void 0;
+const hono_1 = require("hono");
+const rating_controller_1 = require("./rating.controller");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+exports.ratingRouter = new hono_1.Hono();
+exports.ratingRouter.post("/ratings", auth_middleware_1.allRolesAuth, rating_controller_1.ratingController.createRating);
+exports.ratingRouter.put("/ratings/:id", auth_middleware_1.allRolesAuth, rating_controller_1.ratingController.updateRating);
+exports.ratingRouter.get("/ratings/user/:userId", rating_controller_1.ratingController.getRatingsByUser);
+exports.ratingRouter.get("/ratings/order/:orderId", rating_controller_1.ratingController.getRatingsByOrder);
