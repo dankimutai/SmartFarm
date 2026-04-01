@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.knowledgeRouter = void 0;
+const hono_1 = require("hono");
+const knowledge_controller_1 = require("./knowledge.controller");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+exports.knowledgeRouter = new hono_1.Hono();
+exports.knowledgeRouter.post("/posts", auth_middleware_1.allRolesAuth, knowledge_controller_1.knowledgeController.createPost);
+exports.knowledgeRouter.get("/posts", knowledge_controller_1.knowledgeController.searchPosts);
+exports.knowledgeRouter.get('/posts/categories', knowledge_controller_1.knowledgeController.getPopularCategories);
+exports.knowledgeRouter.get('/posts/:id/related', knowledge_controller_1.knowledgeController.getRelatedPosts);
+exports.knowledgeRouter.get("/posts/:id", knowledge_controller_1.knowledgeController.getPost);
+exports.knowledgeRouter.put("/posts/:id", auth_middleware_1.allRolesAuth, knowledge_controller_1.knowledgeController.updatePost);
