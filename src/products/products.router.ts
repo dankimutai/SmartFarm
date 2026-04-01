@@ -6,34 +6,34 @@ import {
   productFilterSchema,
 } from "../validators/validator";
 import { zValidator } from "@hono/zod-validator";
+import { allRolesAuth } from "../middleware/auth.middleware";
 
 export const productRouter = new Hono();
 
-// ✅ Advanced Features
 productRouter.get(
   "/products/search",
   zValidator("query", productFilterSchema),
   productController.search
-); // Search products
+);
 
-// ✅ Basic CRUD Endpoints
-productRouter.get("/products/with-listings", productController.getAllWithListings); 
-productRouter.get("/products", productController.getAll); 
-productRouter.get("/products/:id", productController.getById); 
+productRouter.get("/products/with-listings", productController.getAllWithListings);
+productRouter.get("/products", productController.getAll);
+productRouter.get("/products/:id", productController.getById);
+productRouter.get("/products/:id/listings", productController.getWithListings);
+productRouter.get("/products/paginated", productController.getPaginated);
+
 productRouter.post(
   "/products",
+  allRolesAuth,
   zValidator("json", createProductSchema),
   productController.create
-); // Create product
+);
 productRouter.put(
   "/products/:id",
+  allRolesAuth,
   zValidator("json", updateProductSchema),
   productController.update
-); // Update product
-productRouter.delete("/products/:id", productController.delete); // Delete product
-
-
-productRouter.get("/products/:id/listings", productController.getWithListings); // Get product with listings
-productRouter.get("/products/paginated", productController.getPaginated); // Paginated products
+);
+productRouter.delete("/products/:id", allRolesAuth, productController.delete);
 
 export default productRouter;
