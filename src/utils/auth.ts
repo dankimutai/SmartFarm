@@ -13,7 +13,7 @@ export interface TokenPayload {
   }
   
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "smartfarm_super_secret_key_2024";
 const SALT_ROUNDS = 10;
 
 export async function hashPassword(password: string): Promise<string> {

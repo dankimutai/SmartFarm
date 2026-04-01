@@ -8,7 +8,7 @@ exports.verifyToken = verifyToken;
 const jwt_1 = require("hono/jwt");
 const bcryptjs_1 = require("bcryptjs");
 require("dotenv/config");
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "smartfarm_super_secret_key_2024";
 const SALT_ROUNDS = 10;
 async function hashPassword(password) {
     if (!password) {
