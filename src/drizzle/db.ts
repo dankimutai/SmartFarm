@@ -2,6 +2,7 @@ import {drizzle, NeonHttpDatabase} from "drizzle-orm/neon-http";
 import {neon} from "@neondatabase/serverless";
 import * as schema from "./schema"; 
 
+console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
 
 const databaseUrl = process.env.DATABASE_URL as string;
 if(!databaseUrl){
@@ -9,4 +10,4 @@ if(!databaseUrl){
 }
 
 const sql = neon(databaseUrl);
-export const db: NeonHttpDatabase<typeof schema> = drizzle(sql, {schema, logger: true});    
+export const db: NeonHttpDatabase<typeof schema> = drizzle(sql, {schema, logger: true});

@@ -37,6 +37,7 @@ exports.db = void 0;
 const neon_http_1 = require("drizzle-orm/neon-http");
 const serverless_1 = require("@neondatabase/serverless");
 const schema = __importStar(require("./schema"));
+console.log("DATABASE_URL exists:", !!process.env.DATABASE_URL);
 const databaseUrl = process.env.DATABASE_URL;
 if (!databaseUrl) {
     throw new Error("DATABASE_URL is not set");
