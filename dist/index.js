@@ -22,8 +22,10 @@ const rating_router_1 = require("./ratings/rating.router");
 const app = new hono_1.Hono();
 const allowedOrigins = [
     'http://localhost:5173',
+    'http://localhost:5174',
     'http://localhost:3000',
-    'https://smartfarm-sys-b89d3c.netlify.app'
+    'https://smartfarm-sys-b89d3c.netlify.app',
+    'https://smartfarm-production-d317.up.railway.app'
 ];
 // Add middleware
 app.use('*', (0, cors_1.cors)({

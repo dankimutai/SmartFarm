@@ -20,8 +20,10 @@ import { ratingRouter } from "./ratings/rating.router";
 const app = new Hono();
 const allowedOrigins = [
   'http://localhost:5173',
+  'http://localhost:5174',
   'http://localhost:3000',
-  'https://smartfarm-sys-b89d3c.netlify.app'
+  'https://smartfarm-sys-b89d3c.netlify.app',
+  'https://smartfarm-production-d317.up.railway.app'
 ];
 // Add middleware
 app.use('*', cors({
