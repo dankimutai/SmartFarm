@@ -24,7 +24,7 @@ const allowedOrigins = [
   'http://localhost:3000',
   'https://smartfarm-sys-b89d3c.netlify.app',
   'https://reliable-jelly-003a81.netlify.app',
-  'https://smartfarm-production-d317.up.railway.app'
+  'https://smartfarm-production-87da.up.railway.app'
 ];
 // Add middleware
 app.use('*', cors({
