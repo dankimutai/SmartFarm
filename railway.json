@@ -1,4 +1,4 @@
-﻿{
+{
   "build": {
     "buildCommand": "pnpm install && pnpm build"
   },
